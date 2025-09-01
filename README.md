@@ -17,7 +17,7 @@ Opinionated starter for building services with Clean Architecture and optional W
 
 - `Application` → `Domain`
 - `Infrastructure` → `Application`, `Domain`
-- `Infrastructure.Persistence` → (isolated; no direct refs to other layers by default)
+- `Infrastructure.Persistence` → (isolated; no direct refs to other layers by default) or → `Infrastructure`,
 - `WebApi` → `Application`, `Infrastructure`, `Infrastructure.Persistence`
 - `Worker` → `Application`, `Infrastructure`, `Infrastructure.Persistence`
 
