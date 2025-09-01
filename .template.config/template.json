@@ -1,0 +1,76 @@
+{
+  "$schema": "http://json.schemastore.org/template",
+  "author": "Your Team",
+  "classifications": [
+    "Web",
+    "API",
+    "Service",
+    "Clean Architecture",
+    "Worker",
+    ".NET"
+  ],
+  "identity": "CleanArchitecture.Service.Template",
+  "name": "Clean Architecture Service (API/Worker, .NET 8)",
+  "shortName": "clean-arch-service",
+  "sourceName": "CleanArchitectureTemplate",
+  "preferNameDirectory": true,
+  "tags": {
+    "language": "C#",
+    "type": "project"
+  },
+  "symbols": {
+    "includeWorker": {
+      "type": "parameter",
+      "datatype": "bool",
+      "defaultValue": "false",
+      "description": "Include a background Worker service project"
+    }
+  },
+  "sources": [
+    {
+      "modifiers": [
+        {
+          "exclude": [
+            "**/.git/**",
+            "**/.github/**",
+            "**/.DS_Store",
+            "**/bin/**",
+            "**/obj/**",
+            "**/.idea/**",
+            "**/.vscode/**",
+            "**/.template.config/**"
+          ]
+        },
+        {
+          "condition": "(!includeWorker)",
+          "exclude": [
+            "src/Worker/**"
+          ]
+        }
+      ]
+    }
+  ],
+  "primaryOutputs": [
+    { "path": "src/WebApi/WebApi.csproj" }
+  ],
+  "guids": [
+    "4A875F26-885D-47C9-AA32-E2157CD06A93",
+    "451ED4C3-CCD6-4CF3-AA93-6421CC3056D5",
+    "D87174C3-D6DB-4FB2-B279-060EC6C0A0A7",
+    "5BBF032E-F822-426F-8108-0D7EF061DCB5",
+    "845FC3D0-8D66-46AC-B2DD-6248CCDF5482",
+    "BD0F07AE-B157-4B59-B86E-B695630DD167",
+    "47EAC4BC-EBF9-40F1-A2D0-9CCDC45E1D7B",
+    "E0B7D6B1-78C6-4BE9-9F86-3E0A2C2B7F11"
+  ],
+  "postActions": [
+    {
+      "actionId": "210D431B-A78B-4D2F-B762-4ED3E3EA9025",
+      "description": "Restore NuGet packages",
+      "manualInstructions": [ { "text": "Run: dotnet restore" } ],
+      "args": { "executable": "dotnet", "args": "restore" },
+      "continueOnError": true
+    }
+  ]
+}
+

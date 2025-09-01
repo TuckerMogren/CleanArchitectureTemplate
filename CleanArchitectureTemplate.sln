@@ -12,6 +12,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Infrastructure.Persistence"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebApi", "src\WebApi\WebApi.csproj", "{845FC3D0-8D66-46AC-B2DD-6248CCDF5482}"
 EndProject
+#if (includeWorker)
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Worker", "src\Worker\Worker.csproj", "{E0B7D6B1-78C6-4BE9-9F86-3E0A2C2B7F11}"
+EndProject
+#endif
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ArchitectureTests", "src\Tests\ArchitectureTests\ArchitectureTests.csproj", "{BD0F07AE-B157-4B59-B86E-B695630DD167}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnitTests", "src\Tests\UnitTests\UnitTests.csproj", "{47EAC4BC-EBF9-40F1-A2D0-9CCDC45E1D7B}"
@@ -42,6 +46,12 @@ Global
 		{845FC3D0-8D66-46AC-B2DD-6248CCDF5482}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{845FC3D0-8D66-46AC-B2DD-6248CCDF5482}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{845FC3D0-8D66-46AC-B2DD-6248CCDF5482}.Release|Any CPU.Build.0 = Release|Any CPU
+#if (includeWorker)
+		{E0B7D6B1-78C6-4BE9-9F86-3E0A2C2B7F11}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E0B7D6B1-78C6-4BE9-9F86-3E0A2C2B7F11}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E0B7D6B1-78C6-4BE9-9F86-3E0A2C2B7F11}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E0B7D6B1-78C6-4BE9-9F86-3E0A2C2B7F11}.Release|Any CPU.Build.0 = Release|Any CPU
+#endif
 		{BD0F07AE-B157-4B59-B86E-B695630DD167}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{BD0F07AE-B157-4B59-B86E-B695630DD167}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BD0F07AE-B157-4B59-B86E-B695630DD167}.Release|Any CPU.ActiveCfg = Release|Any CPU

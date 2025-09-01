@@ -20,5 +20,6 @@
     <ProjectReference Include="..\..\Infrastructure\Infrastructure.csproj" />
     <ProjectReference Include="..\..\Infrastructure.Persistence\Infrastructure.Persistence.csproj" />
     <ProjectReference Include="..\..\WebApi\WebApi.csproj" />
+    <ProjectReference Include="..\..\Worker\Worker.csproj" />
   </ItemGroup>
 </Project>
