@@ -12,6 +12,7 @@ public sealed class ArchitectureTests
     private static readonly Assembly _infrastructure = typeof(Infrastructure.Marker).Assembly;
     private static readonly Assembly _persistence = typeof(Infrastructure.Persistence.Marker).Assembly;
     private static readonly Assembly _webApi = typeof(Program).Assembly;
+    private static readonly Assembly _worker = typeof(Worker.Marker).Assembly;
 
     [Fact]
     public void Domain_Should_Not_Depend_On_Application_Infrastructure_Web()
@@ -88,10 +89,31 @@ public sealed class ArchitectureTests
         Assert.True(Types.InAssembly(_application).ShouldNot().HaveDependencyOnAny("WebApi").GetResult().IsSuccessful);
         Assert.True(Types.InAssembly(_persistence).ShouldNot().HaveDependencyOnAny("WebApi").GetResult().IsSuccessful);
         Assert.True(Types.InAssembly(_infrastructure).ShouldNot().HaveDependencyOnAny("WebApi").GetResult().IsSuccessful);
+        Assert.True(Types.InAssembly(_worker).ShouldNot().HaveDependencyOnAny("WebApi").GetResult().IsSuccessful);
+    }
+
+    [Fact]
+    public void OtherLayers_MustNot_DependOn_Worker()
+    {
+        Assert.True(Types.InAssembly(_domain).ShouldNot().HaveDependencyOnAny("Worker").GetResult().IsSuccessful);
+        Assert.True(Types.InAssembly(_application).ShouldNot().HaveDependencyOnAny("Worker").GetResult().IsSuccessful);
+        Assert.True(Types.InAssembly(_persistence).ShouldNot().HaveDependencyOnAny("Worker").GetResult().IsSuccessful);
+        Assert.True(Types.InAssembly(_infrastructure).ShouldNot().HaveDependencyOnAny("Worker").GetResult().IsSuccessful);
+        Assert.True(Types.InAssembly(_worker).ShouldNot().HaveDependencyOnAny("Worker").GetResult().IsSuccessful);
     }
 
     [Fact]
     public void WebApi_MustNot_DependOn_Test_Projects()
+    {
+        TestResult result = Types.InAssembly(_webApi)
+            .ShouldNot()
+            .HaveDependencyOnAny("Application.Tests", "Domain.Tests", "Infrastructure.Tests")
+            .GetResult();
+        Assert.True(result.IsSuccessful);
+    }
+
+        [Fact]
+    public void Worker_MustNot_DependOn_Test_Projects()
     {
         TestResult result = Types.InAssembly(_webApi)
             .ShouldNot()

@@ -17,6 +17,26 @@ dotnet build
 dotnet test src/Tests/ArchitectureTests/ArchitectureTests.csproj
 ```
 
+## Use As a `dotnet new` Template
+
+Install locally from this folder and create a new service:
+
+```bash
+# From the repo root
+dotnet new install .
+
+# Create a new service named MyService (API only)
+dotnet new clean-arch-service -n MyService
+
+# Or include a Worker microservice as well
+dotnet new clean-arch-service -n MyService --includeWorker true
+```
+
+Notes:
+- The solution name `CleanArchitectureTemplate.sln` is replaced with your `-n`.
+- Pass `--includeWorker true` to add `src/Worker` and its solution entry.
+- After generation, run `dotnet restore` and open the `.sln`.
+
 ## Notes
 
 - Keep domain pure. No EF Core or external packages in Domain.
