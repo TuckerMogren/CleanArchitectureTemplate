@@ -1,0 +1,4 @@
+{
+  "dotnet-test-explorer.testProjectPath": "src/Tests/*/*.csproj",
+  "dotnet-test-explorer.autoWatch": false
+}
