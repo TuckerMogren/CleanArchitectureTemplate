@@ -5,13 +5,13 @@ Opinionated starter for building services with Clean Architecture and optional W
 ## Structure
 
 - `src/Domain` — Enterprise entities, value objects, domain events, interfaces.
-- `src/Application` — Use cases, commands, queries, validators, abstractions.
+- `src/Application` — Use cases, commands, queries, validators, abstractions, Consumers, etc.
 - `src/Infrastructure` — Cross-cutting services (e.g., email, time, logging adapters).
-- `src/Infrastructure.Persistence` — Persistence layer placeholder (add EF Core or other provider here).
+- `src/Infrastructure.Persistence` — Persistence layer placeholder (add EF Core or other provider here), Cosmos, Messaging, etc
 - `src/WebApi` — API host, DI composition root, Swagger in Development.
 - `src/Worker` — Optional background worker host (included via template option).
 - `src/Tests/ArchitectureTests` — NetArchTest rules to enforce layering.
-- `src/Tests/UnitTests` — Unit test project scaffold (xUnit + FluentAssertions + Moq).
+- `src/Tests/UnitTests` — Unit test project scaffold (xUnit + FluentAssertions + Moq) - Protect exists, add your own test!
 
 ### Project References (allowed dependencies)
 
@@ -20,8 +20,6 @@ Opinionated starter for building services with Clean Architecture and optional W
 - `Infrastructure.Persistence` → (isolated; no direct refs to other layers by default) or → `Infrastructure`,
 - `WebApi` → `Application`, `Infrastructure`, `Infrastructure.Persistence`
 - `Worker` → `Application`, `Infrastructure`, `Infrastructure.Persistence`
-
-Architecture tests in `src/Tests/ArchitectureTests` validate these rules and ensure `Application` does not reference `Microsoft.EntityFrameworkCore`.
 
 ## Prerequisites
 
