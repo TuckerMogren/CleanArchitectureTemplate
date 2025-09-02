@@ -107,7 +107,7 @@ public sealed class ArchitectureTests
     {
         TestResult result = Types.InAssembly(_webApi)
             .ShouldNot()
-            .HaveDependencyOnAny("Application.Tests", "Domain.Tests", "Infrastructure.Tests")
+            .HaveDependencyOnAny("Application.Tests", "Domain.Tests", "Infrastructure.Tests","Infrastructure.*.Tests")
             .GetResult();
         Assert.True(result.IsSuccessful);
     }
@@ -117,7 +117,7 @@ public sealed class ArchitectureTests
     {
         TestResult result = Types.InAssembly(_webApi)
             .ShouldNot()
-            .HaveDependencyOnAny("Application.Tests", "Domain.Tests", "Infrastructure.Tests")
+            .HaveDependencyOnAny("Application.Tests", "Domain.Tests", "Infrastructure.Tests", "Infrastructure.*.Tests")
             .GetResult();
         Assert.True(result.IsSuccessful);
     }
